@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Status Koneksi</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1 id="status">Memeriksa koneksi...</h1>
+    </div>
+
+    <script>
+      fetch("http://68.183.226.150:8002/status")
+        .then((response) => response.json())
+        .then((data) => {
+          document.getElementById("status").innerText = data.message;
+        })
+        .catch((err) => {
+          document.getElementById("status").innerText =
+            "Gagal terhubung ke database";
+          console.error(err);
+        });
+    </script>
+  </body>
+</html>
